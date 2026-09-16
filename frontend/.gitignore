@@ -21,6 +21,8 @@ build/
 # misc
 .DS_Store
 *.pem
+AGENTS.md
+CLAUDE.md
 
 # debug
 npm-debug.log*
