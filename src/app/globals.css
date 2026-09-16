@@ -1,26 +1,1104 @@
 @import "tailwindcss";
 
+@theme {
+  /* DARK FOUNDATION (Zylux Brand System) */
+  --color-obsidian: #0B0A0F;
+  --color-graphite: #17141D;
+  --color-deep-plum: #241923;
+  --color-plum-gray: #332A35;
+  --color-card-border: #2A2530;
+
+  /* LIGHT FOUNDATION (Zylux Brand System) */
+  --color-white: #FFFFFF;
+  --color-soft-white: #F7F5F8;
+  --color-silver: #D7D3DC;
+  --color-muted-silver: #A7A1AC;
+  --color-body-silver: #B8B2BC;
+  --color-muted-dark: #807985;
+  --color-light-border: #DDD8E0;
+  --color-light-text-secondary: #5F5963;
+
+  /* SIGNATURE ACCENTS (Zylux Brand System) */
+  --color-neon-rose: #FF4F9A;
+  --color-coral: #FF6B61;
+  --color-orange: #FF8A45;
+  --color-deep-rose: #D92C73;
+  --color-accent-text: #FF6F9E;
+
+  /* Framework & Legacy Aliases mapped to official brand system */
+  --color-electric: #FF4F9A;
+  --color-electric-hover: #FF6B61;
+  --color-cyan: #FF8A45;
+  --color-cyan-hover: #FF6B61;
+  --color-surface: #17141D;
+  --color-surface-hover: #332A35;
+  --color-surface-card: #17141D;
+  --color-border-subtle: #2A2530;
+  --color-border-light: #332A35;
+
+  --font-display: var(--font-space-grotesk), sans-serif;
+  --font-sans: var(--font-inter), sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0B0A0F;
+  --foreground: #D7D3DC;
+  --card: #17141D;
+  --card-border: #2A2530;
+  --accent-rose: #FF4F9A;
+  --accent-coral: #FF6B61;
+  --accent-orange: #FF8A45;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html.light, [data-theme="light"] {
+  --background: #F7F5F8;
+  --foreground: #0B0A0F;
+  --card: #FFFFFF;
+  --card-border: #DDD8E0;
+  --accent-rose: #D92C73;
+  --accent-coral: #D84315;
+  --accent-orange: #E65100;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: #FF4F9A;
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   SIGNATURE GRADIENT & BRAND UTILITIES
+   linear-gradient(135deg, #FF4F9A 0%, #FF6B61 50%, #FF8A45 100%)
+   ========================================================================== */
+
+.gradient-brand {
+  background: linear-gradient(135deg, #FF4F9A 0%, #FF6B61 50%, #FF8A45 100%);
+}
+
+.text-gradient-brand {
+  background: linear-gradient(135deg, #FF4F9A 0%, #FF6B61 50%, #FF8A45 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.border-gradient-brand {
+  border-image: linear-gradient(135deg, #FF4F9A 0%, #FF6B61 50%, #FF8A45 100%) 1;
+}
+
+/* Card Styles matching Zylux Brand Spec */
+.zylux-card {
+  background-color: #17141D;
+  border: 1px solid #2A2530;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.zylux-card:hover {
+  border-color: rgba(255, 79, 154, 0.55);
+}
+
+.zylux-card-premium {
+  background: linear-gradient(145deg, #241923 0%, #17141D 100%);
+  border: 1px solid #332A35;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.zylux-card-premium:hover {
+  border-color: rgba(255, 79, 154, 0.6);
+  box-shadow: 0 12px 32px -8px rgba(255, 79, 154, 0.18);
+}
+
+/* Luxury ambient atmospheric pattern - replaces empty square-square grid with organic lighting & micro-constellations */
+.bg-grid-pattern {
+  position: relative;
+  background-image: 
+    radial-gradient(ellipse 60% 40% at 20% 10%, rgba(255, 79, 154, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 35% at 80% 20%, rgba(255, 138, 69, 0.06) 0%, transparent 65%),
+    radial-gradient(circle 1.5px at 16px 16px, rgba(215, 211, 220, 0.05) 100%, transparent 0%);
+  background-size: 100% 100%, 100% 100%, 32px 32px;
+}
+
+.bg-dot-pattern {
+  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(255, 79, 154, 0.12) 1px, transparent 1px);
+}
+
+/* Glassmorphism utility with graphite/plum depth */
+.glass-panel {
+  background: rgba(23, 20, 29, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(42, 37, 48, 0.8);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(36, 25, 35, 0.85);
+  border-color: rgba(255, 79, 154, 0.55);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.6), 0 0 20px -5px rgba(255, 79, 154, 0.2);
+}
+
+/* Infinite Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Atmospheric Ambient Background Animations */
+@keyframes ambientDrift {
+  0%, 100% {
+    transform: scale(1.02) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.06) translate(-12px, -8px);
+  }
+}
+
+@keyframes orbFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate(25px, -18px) scale(1.1);
+    opacity: 1;
+  }
+}
+
+.animate-ambient-drift {
+  animation: ambientDrift 24s ease-in-out infinite alternate;
+}
+
+.animate-orb-float {
+  animation: orbFloat 14s ease-in-out infinite;
+}
+
+.animate-orb-float-delayed {
+  animation: orbFloat 18s ease-in-out infinite 4s;
+}
+
+/* ==========================================================================
+   GLOBAL SECTION ATMOSPHERE DEPTH
+   Allows the fixed creative studio background to seamlessly peek through 
+   all section containers while maintaining 100% card contrast & typography legibility.
+   ========================================================================== */
+html:not(.light) main > div > section,
+html:not(.light) main > div > div > section,
+html:not(.light) main > div[class*="bg-[#0B0A0F]"] {
+  background-color: rgba(11, 10, 15, 0.65) !important;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+html.light main > div > section,
+html.light main > div > div > section,
+html.light main > div[class*="bg-[#0B0A0F]"] {
+  background-color: rgba(247, 245, 248, 0.82) !important;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+html:not(.light) footer {
+  background-color: rgba(11, 10, 15, 0.75) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+html.light footer {
+  background-color: rgba(247, 245, 248, 0.88) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0A0F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #332A35;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF4F9A;
+}
+
+/* Hide scrollbar utility for creative horizontal scroll rails */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Signature Glow utilities */
+.glow-neon-rose {
+  box-shadow: 0 0 35px -5px rgba(255, 79, 154, 0.35);
+}
+
+.glow-coral {
+  box-shadow: 0 0 35px -5px rgba(255, 107, 97, 0.35);
+}
+
+.glow-orange {
+  box-shadow: 0 0 35px -5px rgba(255, 138, 69, 0.35);
+}
+
+.glow-electric {
+  box-shadow: 0 0 35px -5px rgba(255, 79, 154, 0.35);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 35px -5px rgba(255, 138, 69, 0.35);
+}
+
+/* Pulse animation for technical status dot */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+}
+
+.status-dot-pulse {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   GLOBAL COLOR MAPPINGS (Obsidian, Graphite, Plum, Card Border)
+   ========================================================================== */
+
+/* Dark Foundations across all hardcoded references */
+.bg-\[\#0A0A0A\],
+.bg-\[\#0D0D0F\],
+.bg-\[\#0D0D11\],
+.bg-\[\#0c0c12\],
+.bg-\[\#0F0F14\],
+.bg-\[\#0B0B0F\] {
+  background-color: #0B0A0F;
+}
+
+.bg-\[\#121218\],
+.bg-\[\#14141E\],
+.bg-\[\#181822\],
+.bg-\[\#161622\],
+.bg-\[\#121216\],
+.bg-\[\#14141A\],
+.bg-\[\#191922\],
+.bg-\[\#181820\],
+.bg-\[\#16161F\],
+.bg-\[\#16161D\],
+.bg-\[\#121215\],
+.bg-\[\#0E0E12\],
+.bg-\[\#18181C\] {
+  background-color: #17141D;
+  border-color: #2A2530;
+}
+
+/* Primary Electric Violet references mapped to Neon Rose & Signature Gradient */
+.text-\[\#6C63FF\],
+.text-\[\#584EF5\] {
+  color: #FF4F9A;
+}
+
+.text-\[\#A29BFE\],
+.text-\[\#9E95FF\] {
+  color: #FF6F9E;
+}
+
+/* Cyan references mapped to Zylux Orange & Coral */
+.text-\[\#24D6C7\],
+.text-\[\#1CB5A8\] {
+  color: #FF8A45;
+}
+
+.border-\[\#6C63FF\],
+.border-\[\#857DFF\] {
+  border-color: #FF4F9A;
+}
+
+.border-\[\#24D6C7\],
+.border-\[\#56E3D8\] {
+  border-color: #FF8A45;
+}
+
+/* Card hover glow on dark */
+.group:hover .border-\[\#6C63FF\]\/50,
+.group:hover .border-\[\#6C63FF\]\/60 {
+  border-color: rgba(255, 79, 154, 0.55);
+}
+
+/* ==========================================================================
+   LIGHT MODE STYLING ENGINE (Zylux Brand System Page 1 & 2)
+   Background:        #F7F5F8
+   Primary Text:      #0B0A0F
+   Secondary Text:    #5F5963
+   Border:            #DDD8E0
+   Main Heading:      #0B0A0F
+   Secondary Heading: #332A35
+   Body Text:         #5F5963
+   Muted Text:        #807985
+   Accent Text:       #D92C73
+   ========================================================================== */
+
+html.light,
+html[data-theme="light"] {
+  --background: #F7F5F8;
+  --foreground: #0B0A0F;
+  --card: #FFFFFF;
+  --card-border: #DDD8E0;
+  color-scheme: light;
+}
+
+html.light body,
+html[data-theme="light"] body {
+  background-color: #F7F5F8 !important;
+  color: #0B0A0F !important;
+}
+
+/* Luxury atmospheric patterns in Light Mode */
+html.light .bg-grid-pattern {
+  background-image: 
+    radial-gradient(ellipse 60% 40% at 20% 10%, rgba(217, 44, 115, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 35% at 80% 20%, rgba(255, 107, 97, 0.04) 0%, transparent 65%),
+    radial-gradient(circle 1.5px at 16px 16px, rgba(11, 10, 15, 0.035) 100%, transparent 0%) !important;
+  background-size: 100% 100%, 100% 100%, 32px 32px !important;
+}
+
+html.light .bg-dot-pattern {
+  background-image: radial-gradient(rgba(217, 44, 115, 0.12) 1px, transparent 1px) !important;
+}
+
+/* Dual-Theme Atmospheric Background Artwork Visibility Controls */
+.light-only-bg {
+  display: none !important;
+}
+.dark-only-bg {
+  display: block !important;
+}
+
+html.light .dark-only-bg {
+  display: none !important;
+}
+html.light .light-only-bg {
+  display: block !important;
+}
+
+html.dark .dark-only-bg {
+  display: block !important;
+}
+html.dark .light-only-bg {
+  display: none !important;
+}
+
+/* Creative Background Light Theme Overrides (Rich, Distinct, Visible Artwork) */
+html.light .creative-bg-blend {
+  mix-blend-mode: multiply !important;
+  opacity: 0.6 !important;
+  filter: contrast(1.1) brightness(1.02) saturate(1.3) !important;
+}
+
+html.light .creative-bg-vignette {
+  background: radial-gradient(ellipse 85% 65% at 50% 45%, transparent 35%, rgba(247, 245, 248, 0.35) 90%) !important;
+}
+
+html.light .creative-bg-edge {
+  background: linear-gradient(to bottom, rgba(247, 245, 248, 0.35), transparent 25%, transparent 75%, rgba(247, 245, 248, 0.4)) !important;
+}
+
+html.light .creative-bg-side {
+  background: linear-gradient(to right, rgba(247, 245, 248, 0.3), transparent 25%, transparent 75%, rgba(247, 245, 248, 0.3)) !important;
+}
+
+html.light .creative-bg-canvas {
+  background-color: #F7F5F8 !important;
+}
+
+/* Hide or soften black photo gradient overlays in light mode so pictures are never dark */
+html.light div[class*="from-[#0B0A0F]/60"],
+html.light div[class*="from-[#0B0A0F]"][class*="pointer-events-none"]:not(.dark-only-bg):not(.light-only-bg) {
+  display: none !important;
+}
+
+html.light div[class*="from-[#17141D]"][class*="pointer-events-none"] {
+  opacity: 0.06 !important;
+}
+
+/* Ensure foreground photos render natural, but do not override background artwork */
+html.light img:not(.dark-only-bg):not(.light-only-bg):not([alt=""]):not([alt*="Atmosphere"]):not([alt*="Brand"]),
+html.light Image:not(.dark-only-bg):not(.light-only-bg) {
+  opacity: 1;
+  filter: none;
+}
+
+/* Scrollbars in Light Mode */
+html.light ::-webkit-scrollbar-track {
+  background: #F7F5F8;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #DDD8E0;
+}
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #D92C73;
+}
+
+/* ==========================================================================
+   PAGE & CARD SURFACES IN LIGHT MODE
+   ========================================================================== */
+
+/* The root canvas is crisp soft alabaster (#F7F5F8) */
+html.light,
+html.light body {
+  background-color: #F7F5F8 !important;
+}
+
+/* Let the underlying global atmosphere show through page flow */
+html.light main {
+  background-color: transparent !important;
+}
+
+/* In light mode, uncarded page background wrappers and sections are transparent so the luxury artwork shows through */
+html.light section:not([class*="bg-white"]):not(.zylux-card):not([class*="bg-[#17141D]"]):not(.client-strip-section) {
+  background-color: transparent !important;
+}
+
+/* Redesigned Enterprise Client Strip in Light Mode */
+html.light .client-strip-section {
+  background-color: rgba(255, 255, 255, 0.88) !important;
+  border-color: #DDD8E0 !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+html.light .client-strip-section a[class*="bg-[#17141D]"],
+html.light .client-strip-section div[class*="bg-[#17141D]"] {
+  background-color: #FFFFFF !important;
+  border-color: #DDD8E0 !important;
+  box-shadow: 0 4px 16px -2px rgba(11, 10, 15, 0.05) !important;
+}
+
+html.light .client-strip-section [class*="bg-[#241923]"] {
+  background-color: #F7F5F8 !important;
+  border-color: #DDD8E0 !important;
+}
+
+html.light .client-strip-mask-left {
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.95), transparent) !important;
+}
+
+html.light .client-strip-mask-right {
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.95), transparent) !important;
+}
+
+html.light .client-strip-btn {
+  background-color: #FFFFFF !important;
+  border-color: #DDD8E0 !important;
+  color: #0B0A0F !important;
+}
+
+html.light .client-strip-btn:hover {
+  border-color: #D92C73 !important;
+  color: #D92C73 !important;
+}
+
+html.light [class*="bg-[#0B0A0F]"]:not(.zylux-card):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]),
+html.light [class*="bg-[#0A0A0A]"]:not(.zylux-card):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]),
+html.light [class*="bg-[#0D0D0F]"]:not(.zylux-card):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]),
+html.light [class*="bg-[#0D0D11]"]:not(.zylux-card):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]),
+html.light [class*="bg-[#0c0c12]"]:not(.zylux-card):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]),
+html.light [class*="bg-[#0F0F14]"]:not(.zylux-card):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]),
+html.light [class*="bg-[#0B0B0F]"]:not(.zylux-card):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]) {
+  background-color: transparent !important;
+}
+
+/* Clean White Card Surfaces with Crisp Depth */
+html.light [class*="bg-[#17141D]"],
+html.light [class*="bg-[#1C1724]"],
+html.light [class*="bg-[#110E17]"],
+html.light [class*="bg-[#0E0E12]"],
+html.light [class*="bg-[#121218]"],
+html.light [class*="bg-[#14141E]"],
+html.light [class*="bg-[#181822]"],
+html.light [class*="bg-[#161622]"],
+html.light [class*="bg-[#121216]"],
+html.light [class*="bg-[#14141A]"],
+html.light [class*="bg-[#191922]"],
+html.light [class*="bg-[#181820]"],
+html.light [class*="bg-[#16161F]"],
+html.light [class*="bg-[#16161D]"],
+html.light [class*="bg-[#121215]"],
+html.light [class*="bg-[#101918]"],
+html.light [class*="bg-[#12121c]"],
+html.light .zylux-card,
+html.light .zylux-card-premium {
+  background-color: #FFFFFF !important;
+  border-color: #DDD8E0 !important;
+  box-shadow: 0 4px 20px -4px rgba(11, 10, 15, 0.06), 0 1px 3px rgba(11, 10, 15, 0.04) !important;
+}
+
+/* Inner card blocks, step wrappers, and subtle pill containers */
+html.light [class*="bg-[#241923]"]:not(nav *):not(header *):not(button[class*="from-"]):not(a[class*="from-"]):not([class*="gradient-brand"]),
+html.light [class*="bg-[#332A35]"] {
+  background-color: #F7F5F8 !important;
+  border-color: #DDD8E0 !important;
+}
+
+/* Gradient Card Panels (WhatWeBuild detail, ProcessTimeline overview, About philosophy, Callout banners) */
+html.light [class*="from-[#241923]"][class*="to-[#17141D]"],
+html.light [class*="from-[#17141D]"][class*="to-[#17141D]"],
+html.light [class*="from-[#17141D]"][class*="via-[#201524]"],
+html.light [class*="from-[#181824]"],
+html.light [class*="from-[#12121c]"] {
+  background-image: linear-gradient(180deg, #FFFFFF 0%, #F7F5F8 100%) !important;
+  background-color: #FFFFFF !important;
+  border-color: #DDD8E0 !important;
+  box-shadow: 0 8px 30px -6px rgba(11, 10, 15, 0.07) !important;
+}
+
+/* Direct WhatsApp channel card in Light Mode */
+html.light [class*="from-[#1C2820]"] {
+  background-image: linear-gradient(135deg, #FFFFFF 0%, #F0FDF4 100%) !important;
+  background-color: #FFFFFF !important;
+  border-color: rgba(39, 201, 63, 0.45) !important;
+  box-shadow: 0 4px 16px -2px rgba(39, 201, 63, 0.12) !important;
+}
+
+html.light [class*="from-[#1C2820]"] span[class*="text-white"],
+html.light [class*="from-[#1C2820]"] div[class*="text-white"] {
+  color: #0B0A0F !important;
+}
+
+/* Translucent surfaces in Light Mode */
+html.light .bg-white\/\[0\.02\],
+html.light .bg-white\/\[0\.03\],
+html.light .bg-white\/\[0\.04\],
+html.light .bg-white\/\[0\.06\],
+html.light .bg-white\/\[0\.08\],
+html.light .bg-white\/5 {
+  background-color: rgba(11, 10, 15, 0.03) !important;
+}
+
+html.light .bg-white\/10 {
+  background-color: rgba(11, 10, 15, 0.06) !important;
+}
+
+html.light .bg-white\/20 {
+  background-color: rgba(11, 10, 15, 0.1) !important;
+}
+
+/* Glassmorphism in Light Mode */
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid #DDD8E0 !important;
+  box-shadow: 0 4px 20px -2px rgba(11, 10, 15, 0.04) !important;
+}
+
+html.light .glass-panel-hover:hover {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-color: rgba(217, 44, 115, 0.55) !important;
+  box-shadow: 0 16px 36px -12px rgba(11, 10, 15, 0.08), 0 0 20px -5px rgba(217, 44, 115, 0.12) !important;
+}
+
+/* Borders in Light Mode */
+html.light [class*="border-[#2A2530]"],
+html.light [class*="border-[#332A35]"],
+html.light .border-white\/5,
+html.light .border-white\/10,
+html.light .border-white\/15,
+html.light .border-white\/20,
+html.light .border-white\/30,
+html.light .border-white\/40 {
+  border-color: #DDD8E0 !important;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY & CONTRAST ENGINE IN LIGHT MODE
+   ========================================================================== */
+
+/* 1. Gradient Text: MUST PRESERVE TRANSPARENT FILL AND VIVID GRADIENT */
+html.light .text-transparent,
+html.light [class*="text-transparent"],
+html.light .bg-clip-text,
+html.light [class*="bg-clip-text"],
+html.light .text-gradient-brand {
+  background-image: linear-gradient(135deg, #D92C73 0%, #FF5A36 50%, #D84315 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+/* 2. All Headings & Display Titles: Rich High-Contrast Obsidian Charcoal */
+html.light h1:not([class*="text-transparent"]):not([class*="bg-clip-text"]),
+html.light h2:not([class*="text-transparent"]):not([class*="bg-clip-text"]),
+html.light h3:not([class*="text-transparent"]):not([class*="bg-clip-text"]),
+html.light h4:not([class*="text-transparent"]):not([class*="bg-clip-text"]),
+html.light h5:not([class*="text-transparent"]):not([class*="bg-clip-text"]),
+html.light h6:not([class*="text-transparent"]):not([class*="bg-clip-text"]),
+html.light .font-display:not([class*="text-transparent"]):not([class*="bg-clip-text"]):not(button[class*="from-"] *):not(a[class*="from-"] *):not(.gradient-brand *):not(.shimmer-container *) {
+  color: #0B0A0F !important;
+}
+
+/* 3. Text-white classes become #0B0A0F, EXCEPT on Primary Gradient Buttons */
+html.light .text-white:not(button[class*="from-"] *):not(a[class*="from-"] *):not(.gradient-brand *):not(.shimmer-container *):not([class*="bg-gradient-to-r from-"] *):not(span[class*="text-transparent"]):not(span[class*="bg-clip-text"]),
+html.light [class*="text-[#FFFFFF]"]:not(button[class*="from-"] *):not(a[class*="from-"] *):not(span[class*="text-transparent"]) {
+  color: #0B0A0F !important;
+}
+
+/* 4. Body & Secondary Typography: High-Contrast Dark Slate Plum */
+html.light p,
+html.light [class*="text-[#D7D3DC]"]:not(span[class*="text-transparent"]),
+html.light [class*="text-[#B8B2BC]"]:not(span[class*="text-transparent"]),
+html.light .text-white\/90:not(button[class*="from-"] *):not(a[class*="from-"] *),
+html.light .text-white\/80:not(button[class*="from-"] *):not(a[class*="from-"] *),
+html.light .text-white\/70:not(button[class*="from-"] *):not(a[class*="from-"] *) {
+  color: #453E4A !important;
+}
+
+/* 5. Muted Meta Labels, Tags & Subtitles */
+html.light [class*="text-[#A7A1AC]"]:not(span[class*="text-transparent"]),
+html.light [class*="text-[#807985]"]:not(span[class*="text-transparent"]),
+html.light .text-white\/60:not(button[class*="from-"] *):not(a[class*="from-"] *),
+html.light .text-white\/50:not(button[class*="from-"] *):not(a[class*="from-"] *) {
+  color: #6B6370 !important;
+}
+
+/* 6. Accent Text Colors Tuned for Light Backgrounds */
+html.light .text-\[\#FF4F9A\],
+html.light .text-\[\#FF6F9E\] {
+  color: #D92C73 !important; /* Deep Rose, 5.2:1 contrast */
+}
+
+html.light .text-\[\#FF8A45\],
+html.light .text-\[\#FF6B61\] {
+  color: #D84315 !important; /* Deep Coral Orange, 5.1:1 contrast */
+}
+
+html.light .text-\[\#27C93F\] {
+  color: #15803D !important; /* Deep Emerald Green, 5.4:1 contrast */
+}
+
+/* 7. Primary Gradient Buttons & CTAs: Text Stays Crisp Pure White */
+html.light button[class*="from-[#FF4F9A]"],
+html.light a[class*="from-[#FF4F9A]"],
+html.light button.gradient-brand,
+html.light a.gradient-brand,
+html.light button.shimmer-container,
+html.light a.shimmer-container,
+html.light [class*="bg-gradient-to-r from-[#FF4F9A]"] {
+  color: #FFFFFF !important;
+}
+
+html.light button[class*="from-[#FF4F9A]"] *,
+html.light a[class*="from-[#FF4F9A]"] *,
+html.light button.gradient-brand *,
+html.light a.gradient-brand *,
+html.light button.shimmer-container *,
+html.light a.shimmer-container *,
+html.light [class*="bg-gradient-to-r from-[#FF4F9A]"] * {
+  color: #FFFFFF !important;
+}
+
+/* Secondary Button in Light Mode */
+html.light .bg-\[\#17141D\] button,
+html.light a[class*="hover:border-[#FF4F9A]"]:not([class*="from-"]) {
+  color: #0B0A0F !important;
+}
+
+/* Floating Metric Pill on Portfolio Screenshots */
+html.light [class*="bg-black/80"],
+html.light [class*="bg-black/70"] {
+  background-color: rgba(255, 255, 255, 0.94) !important;
+  border-color: #DDD8E0 !important;
+  box-shadow: 0 4px 16px rgba(11, 10, 15, 0.08) !important;
+}
+
+html.light [class*="bg-black/80"] span[class*="text-[#D7D3DC]"],
+html.light [class*="bg-black/70"] span[class*="text-[#D7D3DC]"] {
+  color: #453E4A !important;
+  font-weight: 600 !important;
+}
+
+/* ==========================================================================
+   NAVIGATION, CONTROLS & HUD IN LIGHT MODE
+   ========================================================================== */
+
+/* Sticky Navbar in Light Mode */
+html.light header {
+  background-color: rgba(247, 245, 248, 0.92) !important;
+  border-color: #DDD8E0 !important;
+  box-shadow: 0 4px 20px -2px rgba(11, 10, 15, 0.05) !important;
+}
+
+html.light header nav {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #DDD8E0 !important;
+  box-shadow: 0 2px 8px rgba(11, 10, 15, 0.04) !important;
+}
+
+html.light header nav a,
+html.light header nav button {
+  color: #453E4A !important;
+}
+
+html.light header nav a:hover,
+html.light header nav button:hover {
+  color: #D92C73 !important;
+  background-color: rgba(217, 44, 115, 0.08) !important;
+}
+
+/* Active Nav Pill in Light Mode */
+html.light header nav a[class*="bg-[#241923]"],
+html.light header nav button[class*="bg-[#241923]"] {
+  background-color: #FFF0F6 !important;
+  border-color: rgba(217, 44, 115, 0.35) !important;
+  color: #D92C73 !important;
+  font-weight: 700 !important;
+}
+
+/* Solutions Dropdown Menu in Light Mode */
+html.light header [class*="bg-[#17141D]/95"] {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  border-color: #DDD8E0 !important;
+  box-shadow: 0 20px 40px -8px rgba(11, 10, 15, 0.1) !important;
+}
+
+html.light header [class*="bg-[#17141D]/95"] a:hover {
+  background-color: #FFF0F6 !important;
+}
+
+/* Mobile Drawer in Light Mode */
+html.light .lg\:hidden.fixed[class*="bg-[#0B0A0F]"] {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  border-color: #DDD8E0 !important;
+  box-shadow: 0 20px 40px rgba(11, 10, 15, 0.1) !important;
+}
+
+html.light .lg\:hidden.fixed a {
+  color: #453E4A !important;
+}
+
+html.light .lg\:hidden.fixed a:hover {
+  background-color: #F7F5F8 !important;
+  color: #D92C73 !important;
+}
+
+html.light .lg\:hidden.fixed a[class*="bg-[#241923]"] {
+  background-color: #FFF0F6 !important;
+  border-color: rgba(217, 44, 115, 0.35) !important;
+  color: #D92C73 !important;
+}
+
+/* HeroVisual Architectural Visualizer in Light Mode */
+html.light [class*="ZYLUX_NODE"] {
+  color: #453E4A !important;
+}
+
+html.light svg[class*="stroke-[#332A35]"] {
+  stroke: #DDD8E0 !important;
+}
+
+html.light svg[class*="stroke-[#332A35]"] path {
+  stroke: #C5BFCB !important;
+}
+
+html.light [class*="border-[#FF4F9A]"] {
+  border-color: #D92C73 !important;
+}
+
+/* Capability Scroll Selector in Light Mode */
+html.light [class*="SYS_"] {
+  color: #6B6370 !important;
+}
+
+/* Selected Capability Card */
+html.light [class*="from-[#241923]"][class*="via-[#1F1722]"] {
+  background: linear-gradient(180deg, #FFF0F6 0%, #FFFFFF 100%) !important;
+  border-color: #D92C73 !important;
+  box-shadow: 0 8px 24px -4px rgba(217, 44, 115, 0.18) !important;
+}
+
+/* Capability Selector HUD pills & Chevrons */
+html.light button[class*="bg-[#110E17]"] {
+  background-color: #F0EDF3 !important;
+  color: #453E4A !important;
+  border-color: #DDD8E0 !important;
+}
+
+html.light button[class*="bg-[#241923]"]:not([class*="from-"]) {
+  background-color: #FFFFFF !important;
+  color: #0B0A0F !important;
+  border-color: #DDD8E0 !important;
+}
+
+/* Form Inputs & Interactive Blueprint Console in Light Mode */
+html.light input,
+html.light textarea,
+html.light select {
+  background-color: #FFFFFF !important;
+  color: #0B0A0F !important;
+  border-color: #DDD8E0 !important;
+}
+
+html.light input:focus,
+html.light textarea:focus,
+html.light select:focus {
+  background-color: #FFFFFF !important;
+  border-color: #D92C73 !important;
+  box-shadow: 0 0 0 3px rgba(217, 44, 115, 0.15) !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #807985 !important;
+}
+
+/* Badges in Light Mode */
+html.light [class*="bg-[#FF4F9A]/10"] {
+  background-color: rgba(217, 44, 115, 0.08) !important;
+  border-color: rgba(217, 44, 115, 0.25) !important;
+  color: #D92C73 !important;
+}
+
+html.light [class*="bg-[#FF8A45]/10"] {
+  background-color: rgba(216, 67, 21, 0.08) !important;
+  border-color: rgba(216, 67, 21, 0.25) !important;
+  color: #D84315 !important;
+}
+
+html.light [class*="bg-[#17141D]"][class*="border-[#2A2530]"]:not(section):not(div.rounded-3xl):not(div.rounded-2xl) {
+  background-color: #F7F5F8 !important;
+  border-color: #DDD8E0 !important;
+}
+
+/* Footer in Light Mode */
+html.light footer {
+  background-color: #FFFFFF !important;
+  border-top-color: #DDD8E0 !important;
+}
+
+html.light footer [class*="bg-[#17141D]"] {
+  background-color: #F7F5F8 !important;
+  border-color: #DDD8E0 !important;
+}
+
+html.light footer a[class*="text-[#A7A1AC]"] {
+  color: #5F5963 !important;
+}
+
+html.light footer a[class*="text-[#A7A1AC]"]:hover {
+  color: #0B0A0F !important;
+}
+
+/* ==========================================================================
+   MOTION & ANIMATION SYSTEM
+   Hardware-accelerated, high-fidelity micro-interactions and transitions
+   ========================================================================== */
+
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(150%);
+  }
+}
+
+@keyframes pulse-glow-subtle {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes gradient-flow-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-float {
+  animation: float-gentle 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-gentle 9s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 7s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow-subtle 4s ease-in-out infinite;
+}
+
+.animate-gradient-flow {
+  background-size: 200% 200%;
+  animation: gradient-flow-x 8s ease infinite;
+}
+
+/* Shimmer Light Reflection Effect on Card / Button Hover */
+.shimmer-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-container::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 65%
+  );
+  transform: translateX(-150%);
+  pointer-events: none;
+  transition: transform 0.8s ease;
+}
+
+.shimmer-container:hover::after {
+  transform: translateX(150%);
+}
+
+/* Interactive Card Elevation & Brand Glow */
+.card-interactive {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.card-interactive:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px -10px rgba(255, 79, 154, 0.16),
+              0 0 0 1px rgba(255, 79, 154, 0.35);
+}
+
+html.light .card-interactive:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px -10px rgba(217, 44, 115, 0.14),
+              0 0 0 1px rgba(217, 44, 115, 0.25);
+}
+
+/* Cinematic Image Hover Zoom */
+.img-cinematic {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.img-cinematic:hover {
+  transform: scale(1.05);
+  filter: brightness(1.06);
+}
+
+/* Reduced Motion Preference Override */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile Touch & Momentum Scrolling Utilities */
+.touch-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Ensure mobile form inputs don't trigger intrusive iOS auto-zoom */
+@media screen and (max-width: 640px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Safe area padding helper for modern smartphones (iPhone notch / home indicator) */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 1rem);
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top, 1rem);
 }

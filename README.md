@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zylux-Portfolio
 
-## Getting Started
+> **Official web platform and portfolio for Zylux Software Solutions**  
+> High-performance digital engineering, cybersecurity architecture, and digital growth systems. Founded by **W.M. Dinusha Kalhara Fernando**.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Overview
+
+**Zylux** is a modern software solutions and digital growth studio. This repository contains the complete Next.js 16 web application showcasing our engineering disciplines, case studies, technology stacks, client success stories, and direct project intake desk.
+
+### Key Highlights
+- **Dual-Theme Atmosphere**: Bespoke dark (Obsidian & Neon Rose) and light (Luminous Pearl & Coral) visual environments with seamless hardware-accelerated transitions.
+- **Enterprise Client Strip**: Interactive horizontal showcase of flagship client systems including Abdul Fandom, Aussie Supplements, ChronoSentinel SIEM, Return Buddies, and Sparkler Media.
+- **Bespoke Case Studies**: In-depth architectural breakdowns with key metrics, deployment telemetry, and stack specifications.
+- **Interactive Project Brief & Blueprint Desk**: Dynamic intake console allowing clients to configure requirements and receive instant timeline and budget estimates.
+- **Mobile & Multi-Device Responsive**: Pixel-perfect layout optimization across phones, tablets, foldables, and ultra-wide displays.
+- **Optimized Assets & Performance**: 0 Next.js image warnings, clean SSG static generation across 35+ routes.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router, Turbopack)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **UI & Styling**: [Tailwind CSS](https://tailwindcss.com/) & Vanilla CSS Design Tokens
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Motion & Micro-interactions**: Custom CSS physics & hardware-accelerated animations
+- **Production Deployment**: Vercel / Node.js SSG
+
+---
+
+## 📂 Project Structure
+
+```
+Zylux Portfolio/
+├── public/
+│   └── assets/              # High-resolution branding, portraits & case study visuals
+├── src/
+│   ├── app/                 # Next.js App Router (pages & dynamic routes)
+│   │   ├── about/           # Studio philosophy, founder profile, and values
+│   │   ├── contact/         # Direct architecture desk & intake form
+│   │   ├── insights/        # Technical publications & articles
+│   │   ├── process/         # 4-stage engineering lifecycle
+│   │   ├── services/        # 14 specialized engineering & digital disciplines
+│   │   ├── solutions/       # Technology & digital growth solution hubs
+│   │   ├── work/            # Selected portfolio case studies
+│   │   └── globals.css      # Design tokens, theme variables & animations
+│   ├── components/          # Reusable modular UI components
+│   │   ├── home/            # Hero, ClientStrip, SelectedWork, WhatWeBuild, etc.
+│   │   ├── layout/          # Navbar, Footer, GlobalAtmosphere
+│   │   └── ui/              # Button, Badge, CreativeBackground, Motion
+│   ├── data/                # Strongly-typed data models (projects, insights, services)
+│   ├── lib/                 # Utilities and helper functions
+│   └── types/               # TypeScript interfaces
+└── next.config.ts           # Next.js configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚡ Getting Started
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
+- Node.js 18.17+ or 20+
+- npm or yarn
 
-## Learn More
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/Dinusha-Fernando/Zylux-Portfolio.git
 
-To learn more about Next.js, take a look at the following resources:
+# Navigate to project directory
+cd Zylux-Portfolio
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Install dependencies
+npm install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Deploy on Vercel
+### Production Build
+```bash
+npm run build
+npm run start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 👤 Author
+
+**W.M. Dinusha Kalhara Fernando**  
+- Founder & CEO, Principal Solutions Architect at **Zylux Software Solutions**  
+- Email: [dkalharafernando@gmail.com](mailto:dkalharafernando@gmail.com)  
+- LinkedIn: [Dinusha Kalhara Fernando](https://linkedin.com)  
+- GitHub: [@Dinusha-Fernando](https://github.com/Dinusha-Fernando)
+
+---
+
+## 📄 License
+
+Copyright © 2026 Zylux Software Solutions. All rights reserved.
