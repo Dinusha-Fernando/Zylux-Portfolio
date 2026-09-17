@@ -17,20 +17,20 @@ export function GlobalAtmosphere() {
           fill
           priority
           unoptimized
-          className="object-cover object-center opacity-35 mix-blend-screen scale-105"
+          className="object-cover object-center opacity-65 sm:opacity-70 mix-blend-screen scale-105"
           sizes="100vw"
         />
       </div>
 
-      {/* Dark Depth Vignettes */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_45%,transparent_10%,#0B0A0F_85%)] dark-only-bg" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0B0A0F]/50 via-transparent to-[#0B0A0F]/70 dark-only-bg" />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0B0A0F]/65 via-transparent to-[#0B0A0F]/65 dark-only-bg" />
+      {/* Dark Depth Vignettes (Softened to let artwork and fluid trails shine through) */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_85%_65%_at_50%_45%,transparent_30%,rgba(11,10,15,0.75)_92%)] dark-only-bg" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0B0A0F]/30 via-transparent to-[#0B0A0F]/50 dark-only-bg" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0B0A0F]/35 via-transparent to-[#0B0A0F]/35 dark-only-bg" />
 
       {/* Dark Ambient Glows */}
-      <div className="absolute -top-32 left-1/4 w-[600px] h-[600px] bg-[#FF4F9A]/10 rounded-full blur-[160px] animate-orb-float pointer-events-none dark-only-bg" />
-      <div className="absolute top-1/2 -right-40 w-[500px] h-[500px] bg-[#FF8A45]/8 rounded-full blur-[140px] animate-orb-float-delayed pointer-events-none dark-only-bg" />
-      <div className="absolute -bottom-40 left-1/3 w-[550px] h-[550px] bg-[#FF6B61]/8 rounded-full blur-[160px] pointer-events-none dark-only-bg" />
+      <div className="absolute -top-32 left-1/4 w-[600px] h-[600px] bg-[#FF4F9A]/14 rounded-full blur-[160px] animate-orb-float pointer-events-none dark-only-bg" />
+      <div className="absolute top-1/2 -right-40 w-[500px] h-[500px] bg-[#FF8A45]/12 rounded-full blur-[140px] animate-orb-float-delayed pointer-events-none dark-only-bg" />
+      <div className="absolute -bottom-40 left-1/3 w-[550px] h-[550px] bg-[#FF6B61]/12 rounded-full blur-[160px] pointer-events-none dark-only-bg" />
 
       {/* =========================================================================
           LIGHT THEME BESPOKE ARTWORK (Luminous Pearl, Vibrant Rose, Coral Ribbons)

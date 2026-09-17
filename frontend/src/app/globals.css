@@ -216,9 +216,9 @@ body {
 html:not(.light) main > div > section,
 html:not(.light) main > div > div > section,
 html:not(.light) main > div[class*="bg-[#0B0A0F]"] {
-  background-color: rgba(11, 10, 15, 0.65) !important;
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  background-color: rgba(11, 10, 15, 0.42) !important;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 
 html.light main > div > section,
@@ -236,7 +236,7 @@ html:not(.light) footer {
 }
 
 html.light footer {
-  background-color: rgba(247, 245, 248, 0.88) !important;
+  background-color: #EAE5EE !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -542,13 +542,13 @@ html.light .client-strip-btn:hover {
   color: #D92C73 !important;
 }
 
-html.light [class*="bg-[#0B0A0F]"]:not(.zylux-card):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]),
-html.light [class*="bg-[#0A0A0A]"]:not(.zylux-card):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]),
-html.light [class*="bg-[#0D0D0F]"]:not(.zylux-card):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]),
-html.light [class*="bg-[#0D0D11]"]:not(.zylux-card):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]),
-html.light [class*="bg-[#0c0c12]"]:not(.zylux-card):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]),
-html.light [class*="bg-[#0F0F14]"]:not(.zylux-card):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]),
-html.light [class*="bg-[#0B0B0F]"]:not(.zylux-card):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]) {
+html.light [class*="bg-[#0B0A0F]"]:not(.zylux-card):not(.mobile-menu-drawer):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]),
+html.light [class*="bg-[#0A0A0A]"]:not(.zylux-card):not(.mobile-menu-drawer):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]),
+html.light [class*="bg-[#0D0D0F]"]:not(.zylux-card):not(.mobile-menu-drawer):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]),
+html.light [class*="bg-[#0D0D11]"]:not(.zylux-card):not(.mobile-menu-drawer):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]),
+html.light [class*="bg-[#0c0c12]"]:not(.zylux-card):not(.mobile-menu-drawer):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]),
+html.light [class*="bg-[#0F0F14]"]:not(.zylux-card):not(.mobile-menu-drawer):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]),
+html.light [class*="bg-[#0B0B0F]"]:not(.zylux-card):not(.mobile-menu-drawer):not([class*="rounded-3xl"]):not([class*="rounded-2xl"]):not([class*="rounded-xl"]) {
   background-color: transparent !important;
 }
 
@@ -809,25 +809,73 @@ html.light header [class*="bg-[#17141D]/95"] a:hover {
 }
 
 /* Mobile Drawer in Light Mode */
-html.light .lg\:hidden.fixed[class*="bg-[#0B0A0F]"] {
-  background-color: rgba(255, 255, 255, 0.98) !important;
+html.light .mobile-menu-drawer,
+html.light .lg\:hidden.fixed[class*="bg-[#0B0A0F]"],
+html.light header .mobile-menu-drawer {
+  background-color: #FFFFFF !important;
   border-color: #DDD8E0 !important;
-  box-shadow: 0 20px 40px rgba(11, 10, 15, 0.1) !important;
+  box-shadow: 0 25px 50px -12px rgba(11, 10, 15, 0.15) !important;
 }
 
-html.light .lg\:hidden.fixed a {
-  color: #453E4A !important;
+/* Nav links in mobile drawer */
+html.light .mobile-menu-drawer a:not(a[class*="from-"]):not(.btn-primary):not([class*="bg-gradient"]) {
+  color: #17131D !important;
 }
 
-html.light .lg\:hidden.fixed a:hover {
+html.light .mobile-menu-drawer a:not(a[class*="from-"]):not(.btn-primary):not([class*="bg-gradient"]):hover {
   background-color: #F7F5F8 !important;
   color: #D92C73 !important;
 }
 
-html.light .lg\:hidden.fixed a[class*="bg-[#241923]"] {
+/* Active Nav Pill in mobile drawer */
+html.light .mobile-menu-drawer a[class*="bg-[#241923]"] {
   background-color: #FFF0F6 !important;
   border-color: rgba(217, 44, 115, 0.35) !important;
   color: #D92C73 !important;
+  font-weight: 600 !important;
+}
+
+/* Ensure Primary Gradient Button retains white text & vivid gradient */
+html.light .mobile-menu-drawer a[class*="from-[#FF4F9A]"],
+html.light .mobile-menu-drawer a[class*="from-[#FF4F9A]"]:hover,
+html.light .mobile-menu-drawer [class*="bg-gradient-to-r from-[#FF4F9A]"],
+html.light .mobile-menu-drawer [class*="bg-gradient-to-r from-[#FF4F9A]"] span {
+  color: #FFFFFF !important;
+}
+
+/* Solution sub-links in mobile drawer */
+html.light .mobile-menu-drawer a[href*="/solutions"] {
+  color: #3E3743 !important;
+}
+
+html.light .mobile-menu-drawer a[href*="/solutions"]:hover {
+  color: #D92C73 !important;
+}
+
+html.light .mobile-menu-drawer a[href="/solutions"] {
+  color: #D84315 !important;
+}
+
+/* Divider lines inside mobile drawer */
+html.light .mobile-menu-drawer [class*="border-[#2A2530]"] {
+  border-color: #DDD8E0 !important;
+}
+
+/* Mobile Hamburger button in light mode */
+html.light header button[aria-label="Toggle Menu"] {
+  background-color: #FFFFFF !important;
+  border-color: #DDD8E0 !important;
+  color: #17131D !important;
+}
+
+html.light header button[aria-label="Toggle Menu"]:hover {
+  background-color: #FFF0F6 !important;
+  border-color: rgba(217, 44, 115, 0.4) !important;
+  color: #D92C73 !important;
+}
+
+html.light header button[aria-label="Toggle Menu"] svg {
+  color: inherit !important;
 }
 
 /* HeroVisual Architectural Visualizer in Light Mode */
@@ -912,23 +960,174 @@ html.light [class*="bg-[#17141D]"][class*="border-[#2A2530]"]:not(section):not(d
   border-color: #DDD8E0 !important;
 }
 
-/* Footer in Light Mode */
+/* ==========================================================================
+   FOOTER IN LIGHT MODE (SHADED DARK-WHITE / PEARL SLATE WITH CRISP NAV LINKS)
+   Refined "dark-white" (#EAE5EE) background with high-contrast, sharp typography.
+   ========================================================================== */
+
 html.light footer {
-  background-color: #FFFFFF !important;
-  border-top-color: #DDD8E0 !important;
+  background-color: #EAE5EE !important;
+  border-top-color: #D5CFDA !important;
+  color: #17131D !important;
 }
 
-html.light footer [class*="bg-[#17141D]"] {
-  background-color: #F7F5F8 !important;
-  border-color: #DDD8E0 !important;
+/* Grids and Tier Separator Dividers */
+html.light footer .border-b,
+html.light footer [class*="border-[#2A2530]"],
+html.light footer .border-white\/10,
+html.light footer .border-white\/5 {
+  border-color: #D5CFDA !important;
 }
 
-html.light footer a[class*="text-[#A7A1AC]"] {
-  color: #5F5963 !important;
-}
-
-html.light footer a[class*="text-[#A7A1AC]"]:hover {
+/* Headings & Display Branding */
+html.light footer h1:not([class*="text-transparent"]):not([class*="bg-clip-text"]),
+html.light footer h2:not([class*="text-transparent"]):not([class*="bg-clip-text"]),
+html.light footer h3:not([class*="text-transparent"]):not([class*="bg-clip-text"]),
+html.light footer h4:not([class*="text-transparent"]):not([class*="bg-clip-text"]),
+html.light footer h5:not([class*="text-transparent"]):not([class*="bg-clip-text"]),
+html.light footer h6:not([class*="text-transparent"]):not([class*="bg-clip-text"]),
+html.light footer .font-display:not([class*="text-transparent"]):not([class*="bg-clip-text"]) {
   color: #0B0A0F !important;
+}
+
+/* White Text Elements become Deep Slate Charcoal */
+html.light footer .text-white,
+html.light footer [class*="text-[#FFFFFF]"] {
+  color: #0B0A0F !important;
+}
+
+/* Body & Secondary Copy */
+html.light footer p,
+html.light footer [class*="text-[#D7D3DC]"],
+html.light footer [class*="text-[#B8B2BC]"] {
+  color: #3E3743 !important;
+}
+
+/* Navigation Category Headers (01 / TECHNOLOGY, 02 / DIGITAL GROWTH, etc.) */
+html.light footer .text-white\/40,
+html.light footer .text-white\/50,
+html.light footer .text-white\/60,
+html.light footer [class*="text-[#A7A1AC]"],
+html.light footer [class*="text-[#807985]"] {
+  color: #5E5664 !important;
+  font-weight: 600 !important;
+}
+
+html.light footer [class*="text-[#A7A1AC]/"] {
+  color: #9B94A2 !important;
+}
+
+/* Navigation Links (Crisp & High-Contrast, Contrast Ratio > 13:1) */
+html.light footer a.text-white\/70,
+html.light footer .text-white\/70,
+html.light footer ul li a,
+html.light footer a[class*="text-[#D7D3DC]"] {
+  color: #17131D !important;
+  font-weight: 500 !important;
+  transition: color 0.15s ease-in-out !important;
+}
+
+/* Navigation Links & Socials Hover States */
+html.light footer a.text-white\/70:hover,
+html.light footer .text-white\/70:hover,
+html.light footer ul li a:hover,
+html.light footer a[class*="text-[#D7D3DC]"]:hover,
+html.light footer a[class*="text-[#A7A1AC]"]:hover {
+  color: #D92C73 !important;
+}
+
+/* Quick Contact Box & High-Level Cards */
+html.light footer [class*="bg-[#17141D]"] {
+  background-color: #FFFFFF !important;
+  border-color: #D5CFDA !important;
+  box-shadow: 0 4px 20px -4px rgba(11, 10, 15, 0.05), 0 1px 3px rgba(11, 10, 15, 0.03) !important;
+}
+
+/* Inner Pill Containers, Direct Channel Buttons & Founder Card */
+html.light footer [class*="bg-[#241923]"] {
+  background-color: #F7F5F8 !important;
+  border-color: #D5CFDA !important;
+}
+
+html.light footer [class*="bg-[#332A35]"],
+html.light footer [class*="hover:bg-[#332A35]"]:hover {
+  background-color: #EDE8F0 !important;
+  border-color: #D5CFDA !important;
+}
+
+/* Direct Project Brief Link Hover */
+html.light footer a[href="/contact"]:hover {
+  background-color: #FFFFFF !important;
+  border-color: rgba(217, 44, 115, 0.45) !important;
+}
+
+html.light footer a[href="/contact"]:hover span[class*="text-white"] {
+  color: #D92C73 !important;
+}
+
+/* Arrow Icon Button */
+html.light footer .bg-white\/5 {
+  background-color: #FFFFFF !important;
+  border: 1px solid #D5CFDA !important;
+  color: #17131D !important;
+}
+
+html.light footer a[href="/contact"]:hover .bg-white\/5 {
+  background: linear-gradient(135deg, #D92C73, #FF5A36) !important;
+  border-color: transparent !important;
+  color: #FFFFFF !important;
+}
+
+/* WhatsApp Channel Accent */
+html.light footer a[href*="wa.me"] {
+  background-color: #F0FDF4 !important;
+  border-color: #86EFAC !important;
+  color: #15803D !important;
+}
+
+html.light footer a[href*="wa.me"]:hover {
+  background-color: #DCFCE7 !important;
+  border-color: #4ADE80 !important;
+  color: #166534 !important;
+}
+
+html.light footer [class*="text-[#27C93F]"] {
+  color: #15803D !important;
+}
+
+/* Accent Badges & Highlights */
+html.light footer [class*="text-[#FF4F9A]"] {
+  color: #D92C73 !important;
+}
+
+html.light footer [class*="text-[#FF8A45]"] {
+  color: #D84315 !important;
+}
+
+/* Founder avatar inner base */
+html.light footer [class*="bg-[#0B0A0F]"] {
+  background-color: #EAE5EE !important;
+}
+
+/* Theme Toggle Button inside Footer */
+html.light footer button[class*="border-[#DDD8E0]"],
+html.light footer button[class*="bg-[#F7F5F8]"] {
+  background-color: #FFFFFF !important;
+  border-color: #D5CFDA !important;
+  color: #17131D !important;
+}
+
+html.light footer button[class*="border-[#DDD8E0]"]:hover,
+html.light footer button[class*="bg-[#F7F5F8]"]:hover {
+  background-color: #F7F5F8 !important;
+  border-color: rgba(217, 44, 115, 0.5) !important;
+  color: #D92C73 !important;
+}
+
+/* Ambient glow in light mode footer */
+html.light footer div[class*="bg-[#FF4F9A]/8"],
+html.light footer div[class*="bg-[#FF8A45]/8"] {
+  opacity: 0.35;
 }
 
 /* ==========================================================================

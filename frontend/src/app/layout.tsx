@@ -83,6 +83,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
+      data-scroll-behavior="smooth"
       className={`${spaceGrotesk.variable} ${inter.variable} scroll-smooth max-w-full overflow-x-hidden`}
     >
       <head>

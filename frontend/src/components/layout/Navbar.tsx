@@ -15,10 +15,7 @@ import {
   Code2, 
   TrendingUp, 
   Layers, 
-  ArrowRight,
-  Shield,
-  Terminal,
-  Cpu
+  ArrowRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -200,7 +197,7 @@ export function Navbar() {
 
       {/* Mobile Drawer Menu with Dynamic Viewport Height & Momentum Scrolling */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[58px] sm:top-[68px] h-[calc(100dvh-58px)] sm:h-[calc(100dvh-68px)] bg-[#0B0A0F]/98 backdrop-blur-2xl border-b border-[#2A2530] overflow-y-auto touch-scroll p-5 sm:p-6 flex flex-col justify-between animate-in fade-in slide-in-from-top-2 duration-200 shadow-2xl z-50">
+        <div className="mobile-menu-drawer lg:hidden fixed inset-x-0 top-[58px] sm:top-[68px] h-[calc(100dvh-58px)] sm:h-[calc(100dvh-68px)] bg-[#0B0A0F]/98 backdrop-blur-2xl border-b border-[#2A2530] overflow-y-auto touch-scroll p-5 sm:p-6 flex flex-col justify-between animate-in fade-in slide-in-from-top-2 duration-200 shadow-2xl z-50">
           <div className="space-y-4">
             <div className="pb-3 border-b border-[#2A2530] flex items-center justify-between">
               <Badge variant="status" dot className="text-[11px] font-mono tracking-wider font-semibold">
@@ -214,6 +211,7 @@ export function Navbar() {
             <div className="space-y-1">
               <Link
                 href="/"
+                onClick={() => setMobileMenuOpen(false)}
                 className={cn(
                   "block px-3.5 py-2.5 text-base font-medium rounded-xl transition-colors",
                   pathname === '/'
@@ -231,19 +229,37 @@ export function Navbar() {
                 <div className="pl-3 space-y-1 border-l-2 border-[#2A2530] ml-3.5">
                   <Link
                     href="/solutions/technology"
-                    className="block py-1.5 px-2 text-sm text-[#D7D3DC] hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn(
+                      "block py-1.5 px-2 text-sm rounded-lg transition-colors",
+                      pathname === '/solutions/technology'
+                        ? "text-[#FF4F9A] bg-[#241923]/60 font-semibold"
+                        : "text-[#D7D3DC] hover:text-white hover:bg-white/5"
+                    )}
                   >
                     Technology Studio
                   </Link>
                   <Link
                     href="/solutions/digital"
-                    className="block py-1.5 px-2 text-sm text-[#D7D3DC] hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn(
+                      "block py-1.5 px-2 text-sm rounded-lg transition-colors",
+                      pathname === '/solutions/digital'
+                        ? "text-[#FF4F9A] bg-[#241923]/60 font-semibold"
+                        : "text-[#D7D3DC] hover:text-white hover:bg-white/5"
+                    )}
                   >
                     Digital Growth Studio
                   </Link>
                   <Link
                     href="/solutions"
-                    className="block py-1.5 px-2 text-sm text-[#FF8A45] font-semibold hover:underline"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn(
+                      "block py-1.5 px-2 text-sm font-semibold hover:underline",
+                      pathname === '/solutions'
+                        ? "text-[#FF4F9A] font-bold"
+                        : "text-[#FF8A45]"
+                    )}
                   >
                     View All Services →
                   </Link>
@@ -252,6 +268,7 @@ export function Navbar() {
 
               <Link
                 href="/work"
+                onClick={() => setMobileMenuOpen(false)}
                 className={cn(
                   "block px-3.5 py-2.5 text-base font-medium rounded-xl transition-colors",
                   pathname.startsWith('/work')
@@ -263,6 +280,7 @@ export function Navbar() {
               </Link>
               <Link
                 href="/about"
+                onClick={() => setMobileMenuOpen(false)}
                 className={cn(
                   "block px-3.5 py-2.5 text-base font-medium rounded-xl transition-colors",
                   pathname === '/about'
@@ -274,6 +292,7 @@ export function Navbar() {
               </Link>
               <Link
                 href="/process"
+                onClick={() => setMobileMenuOpen(false)}
                 className={cn(
                   "block px-3.5 py-2.5 text-base font-medium rounded-xl transition-colors",
                   pathname === '/process'
@@ -285,9 +304,10 @@ export function Navbar() {
               </Link>
               <Link
                 href="/insights"
+                onClick={() => setMobileMenuOpen(false)}
                 className={cn(
                   "block px-3.5 py-2.5 text-base font-medium rounded-xl transition-colors",
-                  pathname === '/insights'
+                  pathname.startsWith('/insights')
                     ? "text-white bg-[#241923] border border-[#FF4F9A]/30 font-semibold"
                     : "text-[#D7D3DC] hover:text-white hover:bg-white/5"
                 )}
@@ -296,6 +316,7 @@ export function Navbar() {
               </Link>
               <Link
                 href="/contact"
+                onClick={() => setMobileMenuOpen(false)}
                 className={cn(
                   "block px-3.5 py-2.5 text-base font-medium rounded-xl transition-colors",
                   pathname === '/contact'
@@ -313,9 +334,11 @@ export function Navbar() {
           </div>
 
           <div className="pt-5 pb-6 border-t border-[#2A2530] space-y-3">
-            <Button href="/contact" size="md" showArrow variant="primary" className="w-full">
-              Start a Project
-            </Button>
+            <div onClick={() => setMobileMenuOpen(false)}>
+              <Button href="/contact" size="md" showArrow variant="primary" className="w-full">
+                Start a Project
+              </Button>
+            </div>
             <div className="flex items-center justify-between text-[11px] font-mono text-[#A7A1AC]">
               <span>GLOBAL COVERAGE</span>
               <span className="text-[#27C93F] font-semibold">OPEN 24 HOURS</span>
